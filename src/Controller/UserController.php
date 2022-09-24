@@ -51,21 +51,7 @@ class UserController extends AbstractController
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid())
         {
-            $logoFile = $form->get('logo')->getData();
-            if($logoFile)
-            {
-                $original_file_name = pathinfo($logoFile->getClientOriginalName(), PATHINFO_FILENAME);
-                $filename= bin2hex(random_bytes(6).'.'.$logoFile->guessExtension());
 
-            }
-            try {
-                $logoFile->move(
-                    $this->getParameter('logo_dir'),
-                    $filename);
-
-            }catch (FileException $exception){
-                $boutique->setLogo($filename);
-            }
             $entityManager->persist($boutique);
             $entityManager->flush();
         }
