@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello BoutiqueController!{% endblock %}
+
+{% block body %}
+    <header>
+        <ul>
+            <li><a href="{{ path('app_logout') }}"> deconnexion</a></li>
+        </ul>
+    </header>
+    <div>
+        {% for boutique in boutiques%}
+            <li>{{ boutique.nom }}<a href="{{ path('app_admin_ashop', {'shop': boutique.nom, 'username':username}) }}" >Editer</a></li>
+        {% endfor %}
+    </div>
+{% endblock %}

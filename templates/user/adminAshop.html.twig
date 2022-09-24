@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello BoutiqueController!{% endblock %}
+
+{% block body %}
+    <header>
+        <ul>
+            <li><a href="{{ path('app_logout') }}"> deconnexion</a></li>
+        </ul>
+    </header>
+    <div>
+        <h1>Editez votre boutique</h1>
+        {{form_start(admin_shop_form) }}
+
+            {{ form_row(admin_shop_form.nom) }}
+            {{ form_row(admin_shop_form.domaine) }}
+            {{ form_row(admin_shop_form.pays) }}
+            {{ form_row(admin_shop_form.ville) }}
+            {{ form_row(admin_shop_form.isInternational) }}
+            {{  form(admin_shop_form.logo) }}
+
+        <button type="submit" class="btn">Modifier</button>
+        {{ form_end(admin_shop_form) }}
+    </div>
+{% endblock %}
