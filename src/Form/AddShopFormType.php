@@ -13,17 +13,17 @@ class AddShopFormType extends AbstractType
     {
         $builder
             ->add('nom')
-            ->add('logo')
+            //->add('logo')
             ->add('domaine')
-            ->add('type_abonnement')
-            ->add('vendeur_max')
+            //->add('type_abonnement')
+            //->add('vendeur_max')
             ->add('isInternational')
             ->add('pays')
             ->add('ville')
-            ->add('createdAt')
-            ->add('statut')
-            ->add('proprietaire_id')
-            ->add('proprietaire')
+            //->add('createdAt')
+            //->add('statut')
+            //->add('proprietaire_id')
+            //->add('proprietaire')
         ;
     }
 

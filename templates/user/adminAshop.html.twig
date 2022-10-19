@@ -17,7 +17,8 @@
             {{ form_row(admin_shop_form.pays) }}
             {{ form_row(admin_shop_form.ville) }}
             {{ form_row(admin_shop_form.isInternational) }}
-            {{  form(admin_shop_form.logo) }}
+            {{ form_row(admin_shop_form.logo) }}
+            {{ form_rest(admin_shop_form) }}
         <button type="submit" class="btn">Modifier</button>
         {{ form_end(admin_shop_form) }}
     </div>
