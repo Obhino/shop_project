@@ -39,7 +39,7 @@ class UserController extends AbstractController
         ]);
 
     }
-    #[Route(path:'/{username}/admin/{shop}', name:'app_admin_ashop')]
+    #[Route(path:'/{username}/admin/edit/{shop}', name:'app_edit_ashop')]
     public function adminAshop(Request $request, $username, $shop, EntityManagerInterface $entityManager, BoutiqueRepository $boutiqueRepository, UserRepository $userRepository): Response{
         $boutique = $boutiqueRepository->findOneBy(['nom'=>$shop]);
         $user = $boutique->getProprietaire();
@@ -60,6 +60,24 @@ class UserController extends AbstractController
             'boutique'=>$boutique,
             'user'=>$user,
         ]);
+    }
+    #[Route(path:'/{username}/admin/{shop}/configure', name: 'shop_configuration_interface')]
+    public function ShopConfiguration(Request $request, $username, $shop, EntityManagerInterface $entityManager, BoutiqueRepository $boutiqueRepository, UserRepository $userRepository): Response
+    {
+        $user = $userRepository->findOneBy(['username' => $this->getUser()->getUserIdentifier()]);
+        if ($user->getUsername() == $username)
+        {
+            $boutique = $boutiqueRepository->findOneBy(['nom'=>$shop]);
+
+            return $this->render('shop_configuration/index.html.twig', [
+                'name' => 'ShopConfiguration',
+                'boutique'=>$boutique,
+                'username'=>$user->getUsername(),
+            ]);
+        }else{
+            return $this->render('boutique/noshop.html.twig');
+        }
+
     }
 
 }
